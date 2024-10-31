@@ -1,0 +1,1 @@
+Arquivo ClienteGUI é responsável pela interface, arquivo Cliente é responsável pelos objetos, arquivo ClienteDAO é responsável pelos métodos, arquivo DatabaseConnection é o que faz a conexão com o banco e o arquivo Main executa.
