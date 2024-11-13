@@ -5,7 +5,10 @@ public class Cliente {
     private String telefone; // Telefone do cliente
     private String dataCadastro; // Data de cadastro
 
-    // Construtor - Resposável por inicializar os objetos - André
+    /** Metodo Constructor responsável por inicializar os objetos da classe.
+     * @author André
+     * @version 1.0
+     * */
     public Cliente(int id, String nome, String email, String telefone, String dataCadastro) {
         this.id = id;
         this.nome = nome;
@@ -14,7 +17,11 @@ public class Cliente {
         this.dataCadastro = dataCadastro;
     }
 
-    // Métodos getters - Obtém o valor da variável - André
+    /** Métodos getters - Obtém o valor da variável
+     * @author André
+     * @version 1.0
+     * @return os valores armazenados nas variáveis.
+     * */
     public int getId() {
         return id;
     }
@@ -35,7 +42,10 @@ public class Cliente {
         return dataCadastro;
     }
 
-    // Métodos setters - Altera valor da variável - André
+    /** Métodos setters - Altera valor da variável
+     * @author André
+     * @version 1.0
+     * */
     public void setNome(String nome) {
         this.nome = nome;
     }
