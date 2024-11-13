@@ -7,13 +7,22 @@ public class DatabaseConnection {
     private static final String USER = "root";
     private static final String PASSWORD = "@Av326800";
 
-    //Método que visa estabelecer conexão com banco de dados - Gabriel Viana
+    /** Método que visa estabelecer conexão com banco de dados
+     * @author Gabriel Viana
+     * @since 1.0
+     * */
     public static Connection getConnection() {
         Connection connection = null;
         try {
-            // Registra o driver JDBC- Gabriel Viana
+            /** Classe responsável por registrar o driver JDBC
+             * @author Gabriel Viana
+             * @since 1.0
+             */
             Class.forName("com.mysql.cj.jdbc.Driver");
-            // Estabelece a conexão - Gabriel Viana
+            /** Estabelece a conexão
+             * @author Gabriel Viana
+             * @since 1.0
+             * */
             connection = DriverManager.getConnection(URL, USER, PASSWORD);
             System.out.println("Conexão estabelecida com sucesso!");
         } catch (SQLException e) {
