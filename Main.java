@@ -5,7 +5,10 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
-        //Interface - André
+        /** Inicializa a interface da classe ClienteGUI
+         * @author Andre
+         * version 1.0
+         * */
         SwingUtilities.invokeLater(() -> {
             ClienteGUI frame = new ClienteGUI();
             frame.setVisible(true);
@@ -24,11 +27,14 @@ public class Main {
             System.out.print("Escolha uma opção: ");
 
             int opcao = scanner.nextInt();
-            scanner.nextLine(); // Consumir a nova linha
+            scanner.nextLine();
 
             switch (opcao) {
                 case 1:
-                    // Cadastrar Cliente
+                    /** Responsável pelo cadastro do cliente, armazenando os valores inseridos em suas respectivas variáveis
+                     * @author Gabriel Viana
+                     * @Version 1.0
+                     * */
                     System.out.print("Nome: ");
                     String nome = scanner.nextLine();
                     System.out.print("Email: ");
@@ -43,7 +49,9 @@ public class Main {
                     break;
 
                 case 2:
-                    // Listar Clientes
+                    /** Lista os clientes
+                     * @author Andre
+                     * @version 1.0*/
                     List<Cliente> clientes = clienteDAO.getAllClientes();
                     if (clientes.isEmpty()) {
                         System.out.println("Nenhum cliente cadastrado.");
@@ -57,7 +65,10 @@ public class Main {
                     break;
 
                 case 3:
-                    // Buscar Cliente por ID
+                    /** Realiza a busca do cliente através do ID
+                     * @author Frederico Augusto
+                     * @version 1.0
+                     * */
                     System.out.print("Digite o ID do cliente: ");
                     int clienteId = scanner.nextInt();
                     Cliente cliente = clienteDAO.getClienteById(clienteId);
@@ -71,10 +82,13 @@ public class Main {
                     break;
 
                 case 4:
-                    // Atualizar Cliente
+                    /** Atualiza os dados cadastrados do cliente no banco de dados
+                     * @author Gabriel Viana
+                     * @version 1.0
+                     * */
                     System.out.print("Digite o ID do cliente a ser atualizado: ");
                     clienteId = scanner.nextInt();
-                    scanner.nextLine(); // Consumir a nova linha
+                    scanner.nextLine();
 
                     Cliente clienteParaAtualizar = clienteDAO.getClienteById(clienteId);
                     if (clienteParaAtualizar != null) {
@@ -112,14 +126,18 @@ public class Main {
                     break;
 
                 case 5:
-                    // Deletar Cliente
+                    /** Deleta do banco de dados os dados referente ao cliente cujo id está associado
+                     * @author Gabriel Viana
+                     * @version 1.0*/
                     System.out.print("Digite o ID do cliente a ser deletado: ");
                     clienteId = scanner.nextInt();
                     clienteDAO.deleteCliente(clienteId);
                     break;
 
                 case 6:
-                    // Sair
+                    /** Sai do programa
+                     * @author Andre
+                     * @version 1.0*/
                     System.out.println("Saindo...");
                     scanner.close();
                     System.exit(0);
