@@ -22,7 +22,10 @@ public class ClienteGUI extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
 
-        // Painel de Formulário - André
+        /** Painel visual do formulário
+         * @author Andre
+         * @version 1.0
+         * */
         JPanel panelForm = new JPanel(new GridLayout(5, 2));
         panelForm.add(new JLabel("ID:"));
         txtId = new JTextField();
@@ -46,7 +49,10 @@ public class ClienteGUI extends JFrame {
 
         add(panelForm, BorderLayout.NORTH);
 
-        // Painel de Botões - Gabriel Viana
+        /** Painel de Botões
+         * @author Gabriel Viana
+         * @version 1.0
+         * */
         JPanel panelButtons = new JPanel();
         JButton btnCreate = new JButton("Cadastrar");
         JButton btnRead = new JButton("Listar Todos");
@@ -60,12 +66,18 @@ public class ClienteGUI extends JFrame {
 
         add(panelButtons, BorderLayout.CENTER);
 
-        // Tabela para exibir dados - Frederico
+        /** Tabela para exibir dados
+         * @author Frederico Augusto
+         * @version 1.0
+         * */
         tableModel = new DefaultTableModel(new String[]{"ID", "Nome", "Email", "Telefone", "Data Cadastro"}, 0);
         table = new JTable(tableModel);
         add(new JScrollPane(table), BorderLayout.SOUTH);
 
-        // Ações dos Botões - André
+        /** Ações dos Botões
+         * @author Andre
+         * @version 1.0
+         * */
         btnCreate.addActionListener(e -> createCliente());
         btnRead.addActionListener(e -> readClientes());
         btnUpdate.addActionListener(e -> updateCliente());
@@ -78,7 +90,10 @@ public class ClienteGUI extends JFrame {
         String telefone = txtTelefone.getText();
         String dataCadastro = txtDataCadastro.getText();
 
-        // Cria o objeto Cliente e insere no banco de dados - Gabriel Viana
+        /** Cria o objeto Cliente e insere no banco de dados
+         * @author Gabriel Viana
+         * @version 1.0
+         * */
         Cliente cliente = new Cliente(0, nome, email, telefone, dataCadastro);
         clienteDAO.addCliente(cliente);
         JOptionPane.showMessageDialog(this, "Cliente cadastrado com sucesso!");
@@ -87,12 +102,18 @@ public class ClienteGUI extends JFrame {
     }
 
     private void readClientes() {
-        // Limpa a tabela antes de listar todos os clientes
+        /** Limpa a tabela antes de listar todos os clientes
+         * @author Andre
+         * @version 1.0
+         * */
         tableModel.setRowCount(0);
 
         List<Cliente> clientes = clienteDAO.getAllClientes();
 
-        // Adiciona os dados dos clientes à tabela
+        /** Adiciona os dados dos clientes à tabela
+         * @author Gabriel Viana
+         * @version 1.0
+         * */
         for (Cliente cliente : clientes) {
             Object[] rowData = {
                     cliente.getId(),
@@ -124,7 +145,7 @@ public class ClienteGUI extends JFrame {
         JOptionPane.showMessageDialog(this, "Cliente atualizado com sucesso!");
 
         clearFields();
-        readClientes(); // Atualiza a lista após atualização
+        readClientes(); /** Atualiza a lista após atualização @author Andre*/
     }
 
     private void deleteCliente() {
@@ -140,7 +161,7 @@ public class ClienteGUI extends JFrame {
         JOptionPane.showMessageDialog(this, "Cliente excluído com sucesso!");
 
         clearFields();
-        readClientes(); // Atualiza a lista após exclusão
+        readClientes(); /** Atualiza a lista após exclusão @author Andre*/
     }
 
     private void clearFields() {
