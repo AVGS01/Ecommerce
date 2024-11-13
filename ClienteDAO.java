@@ -5,11 +5,19 @@ import java.util.List;
 public class ClienteDAO {
     private Connection conn;
 
+
+    /** Construtor responsável por inicializar a conexão com o banco de dados
+     * @author Frederico Augusto
+     * @version 1.0
+     * */
     public ClienteDAO() {
-        this.conn = DatabaseConnection.getConnection(); // É o construtor que inicializa a conexão com o banco - Frederico
+        this.conn = DatabaseConnection.getConnection();
     }
 
-    // Método responsável por adicionar os dados dos clientes ao banco de dados - Frederico
+    /** Método responsável por adicionar os dados dos clientes ao banco de dados
+     * @author Frederico Augusto
+     * @version 1.0
+     * */
     public void addCliente(Cliente cliente) {
         String sql = "INSERT INTO cliente (nome, email, telefone, data_cadastro) VALUES (?, ?, ?, ?)";
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -24,7 +32,10 @@ public class ClienteDAO {
         }
     }
 
-    // Método responsável por obter e listar os dados dos clientes - Frederico
+    /** Método responsável por obter e listar os dados dos clientes
+     * @author Frederico Augusto
+     * @version 1.0
+     * */
     public List<Cliente> getAllClientes() {
         List<Cliente> clientes = new ArrayList<>();
         String sql = "SELECT * FROM cliente";
@@ -46,7 +57,10 @@ public class ClienteDAO {
         return clientes;
     }
 
-    //Seleciona o cliente pelo ID - Frederico
+    /** Método responsável por selecionar o cliente pelo ID -
+     * @author Gabriel Viana
+     * @version 1.0
+     * */
     public Cliente getClienteById(int clienteId) {
         String sql = "SELECT * FROM cliente WHERE cliente_id = ?";
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -64,10 +78,13 @@ public class ClienteDAO {
         } catch (SQLException e) {
             System.err.println("Erro ao buscar cliente: " + e.getMessage());
         }
-        return null; // Retorna null se não encontrar
+        return null;
     }
 
-    //Método responsável por atualizar os dados dos clientes - Frederico
+    /** Método responsável por atualizar os dados dos clientes
+     * @author Frederico Augusto
+     * @version 1.0
+     * */
     public void updateCliente(Cliente cliente) {
         String sql = "UPDATE cliente SET nome = ?, email = ?, telefone = ?, data_cadastro = ? WHERE cliente_id = ?";
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -83,7 +100,10 @@ public class ClienteDAO {
         }
     }
 
-    //Método responsável por deletar os dados do cliente pelo ID - Frederico
+    /** Método responsável por deletar os dados do cliente pelo ID
+     * @author Frederico Augusto
+     * @version 1.0
+     * */
     public void deleteCliente(int clienteId) {
         String sql = "DELETE FROM cliente WHERE cliente_id = ?";
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
